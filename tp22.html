@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="right">
+<form >
+    <label for="name">name</label>
+    <input id="name" type="text">
+    <label for="content">content</label>
+    <input id="content" type="text">
+    <button id="submit" type="button" value="add to list">submit</button>
+</form>   
+
+</div>
+<div class="left">
+</div>
+<ol>
+
+
+</ol>
+    <script>
+var list=new Array();
+const name=document.getElementById("name");
+const content=document.getElementById("content");
+const div=document.querySelector("ol");
+var del=document.querySelectorAll(".delete");
+const submit=document.getElementById("submit").addEventListener("click", (e)=>{
+   list.push(name.value+" : "+content.value);
+e.preventDefault();
+text=""
+list.forEach((value,id)=>{
+text+="<li>"+value+"  <button class='delete'id="+id+" type='button' onclick='onl("+id+")'>delete</button></li>" ;
+})
+div.innerHTML=text;
+});
+function onl(id){
+    console.log(id)
+    list.splice(id, 1);
+  document.getElementById(id).parentNode.remove();
+
+    };
+
+
+    </script>
+</body>
+</html>
